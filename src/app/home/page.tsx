@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import InputBox from "../components/InputBox";
+import AIResponse from "../components/AIResponse";
 
 const page = () => {
   return (
@@ -16,6 +17,7 @@ const page = () => {
       </div>
       <div className="mt-8">
         <InputBox type="text" value="" onChange={() => {}} />
+        <AIResponse />
       </div>
     </div>
   );
