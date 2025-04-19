@@ -1,11 +1,17 @@
 "use client";
 import { useState } from "react";
 
+import { useLogin } from "../hooks/useLogin";
+import { useRegister } from "../hooks/useRegister";
+
 interface LoginProps {
   initialMode?: "login" | "register";
 }
 
+
 export default function Login({ initialMode = "login" }: LoginProps) {
+  const { login} = useLogin()
+  const { register} = useRegister()
   const [isLogin, setIsLogin] = useState(initialMode === "login");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -17,7 +23,13 @@ export default function Login({ initialMode = "login" }: LoginProps) {
   };
 
   const handleSubmit = () => {
-    console.log("submit");
+    if (isLogin) {
+      login(email, password);
+      
+    } else {
+     register(name, email, password);
+    }
+   
   };
 
   return (
